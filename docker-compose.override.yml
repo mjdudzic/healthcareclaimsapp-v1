@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  healthcareclaimsv1:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=healthcare-claims-v1;Username=postgres;Password=test*123
+      - ObjectsStorage__Endpoint=host.docker.internal:9000
+      - ObjectsStorage__AccessKye=minio
+      - ObjectsStorage__SecretKey=minio123
+    ports:
+      - "5000:80"
+    networks:
+      - backtier
+
+  healthcareclaimsv2:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=healthcare-claims-v2;Username=postgres;Password=test*123
+      - ObjectsStorage__Endpoint=host.docker.internal:9000
+      - ObjectsStorage__AccessKye=minio
+      - ObjectsStorage__SecretKey=minio123
+    ports:
+      - "5001:80"
+    networks:
+      - backtier
+
+networks:
+  backtier:
+    driver: bridge

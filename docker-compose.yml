@@ -1,0 +1,44 @@
+version: '3.4'
+
+services:
+  healthcareclaimsv1:
+    image: ${DOCKER_REGISTRY-}healthcareclaimsv1
+    build:
+      context: .
+      dockerfile: HealthcareClaims/Dockerfile
+
+  healthcareclaimsv2:
+    image: ${DOCKER_REGISTRY-}healthcareclaimsv2
+    build:
+      context: .
+      dockerfile: HealthcareClaimsWithModules/Dockerfile
+
+  objects.storage:
+    image: minio/minio
+    environment:
+      - MINIO_ACCESS_KEY=minio
+      - MINIO_SECRET_KEY=minio123
+    ports:
+      - "9000:9000"
+    volumes:
+      - objectstorage:/data
+    command: server /data
+    networks:
+      - backtier
+
+  postgres:
+    image: postgres:11-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_PASSWORD=test*123
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - backtier
+
+volumes: 
+  pgdata:
+    driver: local
+  objectstorage:
+    driver: local
