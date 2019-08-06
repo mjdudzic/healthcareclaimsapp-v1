@@ -9,22 +9,14 @@ namespace HealthcareClaims.Controllers
 	[ApiController]
 	public class ValuesController : ControllerBase
 	{
-		private readonly IConfiguration _configuration;
-		private readonly IOptions<AppConfig> _appConfig;
-
-		public ValuesController(
-			IConfiguration configuration,
-			IOptions<AppConfig> appConfig)
+		public ValuesController()
 		{
-			_configuration = configuration;
-			_appConfig = appConfig;
 		}
 		// GET api/values
 		[HttpGet]
 		public ActionResult<IEnumerable<string>> Get()
 		{
-			return new string[] { _configuration["DB_CONNECTION_STRING"], _appConfig.Value.ObjectsStorage.Endpoint };
-			//return new string[] { "value1", "value2" };
+			return new string[] { "value1", "value2" };
 		}
 
 		// GET api/values/5

@@ -9,6 +9,8 @@ services:
 
   healthcareclaimsv2:
     image: ${DOCKER_REGISTRY-}healthcareclaimsv2
+    depends_on:
+      - consul
     build:
       context: .
       dockerfile: HealthcareClaimsWithModules/Dockerfile
@@ -37,8 +39,24 @@ services:
     networks:
       - backtier
 
+  consul:
+    image: consul:latest
+    command: consul agent -dev -log-level=warn -ui -client=0.0.0.0
+    hostname: consul
+    ports:
+      - "8500:8500"
+    volumes:
+      - consulconfig:/config
+      - consuldata:/data
+    networks:
+      - backtier
+
 volumes: 
   pgdata:
     driver: local
   objectstorage:
+    driver: local
+  consulconfig:
+    driver: local
+  consuldata:
     driver: local
