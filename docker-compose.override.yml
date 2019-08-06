@@ -5,9 +5,10 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=healthcare-claims-v1;Username=postgres;Password=test*123
-      - ObjectsStorage__Endpoint=host.docker.internal:9000
+      - ObjectsStorage__Endpoint=objectsstorage:9000
       - ObjectsStorage__AccessKye=minio
       - ObjectsStorage__SecretKey=minio123
+      - ElasticConfiguration__Url=http://elasticsearch:9200
     ports:
       - "5000:80"
     networks:
@@ -17,11 +18,25 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=healthcare-claims-v2;Username=postgres;Password=test*123
-      - ObjectsStorage__Endpoint=host.docker.internal:9000
+      - ObjectsStorage__Endpoint=objectsstorage:9000
       - ObjectsStorage__AccessKye=minio
       - ObjectsStorage__SecretKey=minio123
+      - ElasticConfiguration__Url=http://elasticsearch:9200
     ports:
       - "5001:80"
+    networks:
+      - backtier
+
+  claimssubmissionapi:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DB_CONNECTION_STRING=Host=postgres;Port=5432;Database=healthcare-claims-v2;Username=postgres;Password=test*123
+      - ObjectsStorage__Endpoint=objectsstorage:9000
+      - ObjectsStorage__AccessKye=minio
+      - ObjectsStorage__SecretKey=minio123
+      - ElasticConfiguration__Url=http://elasticsearch:9200
+    ports:
+      - "5002:80"
     networks:
       - backtier
 

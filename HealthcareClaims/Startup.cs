@@ -30,6 +30,8 @@ namespace HealthcareClaims
 		{
 			AddDbContexts(services);
 			AddHangfire(services);
+
+			services.AddHttpClient();
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 		}
 

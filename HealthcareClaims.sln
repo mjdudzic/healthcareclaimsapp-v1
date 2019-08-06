@@ -7,19 +7,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthcareClaims", "Healthc
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{76B4AEFC-4361-4CC1-A29E-3540F2899C6F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HealthcareClaimsWithModules", "HealthcareClaimsWithModules\HealthcareClaimsWithModules.csproj", "{29D9BD5F-E60E-4E54-8A26-89144F271BD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthcareClaimsWithModules", "HealthcareClaimsWithModules\HealthcareClaimsWithModules.csproj", "{29D9BD5F-E60E-4E54-8A26-89144F271BD9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{ECF7B9C5-504F-4A41-A8BC-A619B0E55E26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsSubmission", "Modules\ClaimsSubmission\ClaimsSubmission.csproj", "{F3F85093-1D80-4521-B76F-786F2A5F3F9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClaimsSubmission", "Modules\ClaimsSubmission\ClaimsSubmission.csproj", "{F3F85093-1D80-4521-B76F-786F2A5F3F9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsVetting", "Modules\ClaimsVetting\ClaimsVetting.csproj", "{5D15D075-A5FF-4F24-A4DA-F00E1E6B9D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ClaimsVetting", "Modules\ClaimsVetting\ClaimsVetting.csproj", "{5D15D075-A5FF-4F24-A4DA-F00E1E6B9D84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Modules\Infrastructure\Infrastructure.csproj", "{1F67989F-A6C2-4C54-9380-D0D76EAB0EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Modules\Infrastructure\Infrastructure.csproj", "{1F67989F-A6C2-4C54-9380-D0D76EAB0EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Codes", "Modules\Codes\Codes.csproj", "{185CBA98-749D-405B-9782-60410B614D8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Codes", "Modules\Codes\Codes.csproj", "{185CBA98-749D-405B-9782-60410B614D8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InsuredMembers", "Modules\InsuredMembers\InsuredMembers.csproj", "{4B2AE46E-0E82-4136-8300-25FADA68B053}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InsuredMembers", "Modules\InsuredMembers\InsuredMembers.csproj", "{4B2AE46E-0E82-4136-8300-25FADA68B053}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClaimsSubmission.Api", "ClaimsSubmission.Api\ClaimsSubmission.Api.csproj", "{25FDB4F3-5B6A-4ED6-B1E7-0D49D2AFB568}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{4B2AE46E-0E82-4136-8300-25FADA68B053}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4B2AE46E-0E82-4136-8300-25FADA68B053}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4B2AE46E-0E82-4136-8300-25FADA68B053}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FDB4F3-5B6A-4ED6-B1E7-0D49D2AFB568}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FDB4F3-5B6A-4ED6-B1E7-0D49D2AFB568}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FDB4F3-5B6A-4ED6-B1E7-0D49D2AFB568}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FDB4F3-5B6A-4ED6-B1E7-0D49D2AFB568}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

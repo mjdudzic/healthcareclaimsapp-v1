@@ -30,6 +30,7 @@ namespace HealthcareClaimsWithModules
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddHttpClient();
 			AddDbContexts(services);
 			AddHangfire(services);
 			services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
@@ -71,6 +72,8 @@ namespace HealthcareClaimsWithModules
 			services.AddSingleton<IObjectsStorageServiceConfiguration>(objectsStorageServiceConfiguration);
 			services.AddTransient<IObjectsStorageService, ObjectsStorageService>();
 			services.AddTransient<IMinioClientFactory, MinioClientFactory>();
+
+			services.Configure<AppConfig>(Configuration);
 		}
 
 		private void AddHangfire(IServiceCollection services)
@@ -92,5 +95,15 @@ namespace HealthcareClaimsWithModules
 				Authorization = new[] { new FakeDashboardAuthFilter() }
 			});
 		}
+	}
+
+	public class AppConfig
+	{
+		public ObjectsStorage ObjectsStorage { get; set; }
+	}
+
+	public class ObjectsStorage
+	{
+		public string Endpoint { get; set; }
 	}
 }

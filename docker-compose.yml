@@ -15,7 +15,13 @@ services:
       context: .
       dockerfile: HealthcareClaimsWithModules/Dockerfile
 
-  objects.storage:
+  claimssubmissionapi:
+    image: ${DOCKER_REGISTRY-}claimssubmissionapi
+    build:
+      context: .
+      dockerfile: ClaimsSubmission.Api/Dockerfile
+
+  objectsstorage:
     image: minio/minio
     environment:
       - MINIO_ACCESS_KEY=minio
@@ -51,6 +57,27 @@ services:
     networks:
       - backtier
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.2.0
+    environment:
+      - discovery.type=single-node
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - elasticsearchdata:/usr/share/elasticsearch/data
+    networks:
+      - backtier
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.2.0
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - backtier
+
 volumes: 
   pgdata:
     driver: local
@@ -59,4 +86,6 @@ volumes:
   consulconfig:
     driver: local
   consuldata:
+    driver: local
+  elasticsearchdata:
     driver: local
